@@ -1,0 +1,30 @@
+{
+  "name": "wqer1019/auto_update",
+  "description": "a project auto update extension based on laravel development.",
+  "type": "library",
+  "authors": [
+    {
+      "name": "sunlong",
+      "email": "2013855675@qq.com"
+    }
+  ],
+  "require": {
+    "symfony/finder": "^4.0"
+  },
+  "autoload": {
+    "files": [
+      "src/helpers.php"
+    ],
+    "psr-4": {
+      "Wqer1019\\AutoUpdate\\": "src//"
+    }
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "Wqer1019\\AutoUpdate\\ServiceProvider"
+      ]
+    }
+  },
+  "license": "MIT"
+}
