@@ -32,7 +32,7 @@ class ServiceProvider extends BaseServiceProvider
 
     public function setupRoutes(Router $router)
     {
-        $router->group(['namespace' => 'Wqer1019\AutoUpdate\Controllers'], function ($router) {
+        $router->group(['namespace' => __NAMESPACE__ . '\Controllers'], function ($router) {
             require __DIR__ . '/routes.php';
         });
     }
