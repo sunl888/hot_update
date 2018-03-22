@@ -5,13 +5,17 @@ namespace Wqer1019\AutoUpdate;
 class ExcludeResource
 {
     private $files = [];
+
     private $directories = [];
+
     private $extensions = [];
 
     public function __construct($config)
     {
         $this->files = $config['files'];
+
         $this->directories = $config['directories'];
+
         $this->extensions = $config['extensions'];
     }
 

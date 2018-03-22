@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Administrator
- * Date: 2018/3/22
- * Time: 13:28
- */
 
 namespace Wqer1019\AutoUpdate;
 
