@@ -3,7 +3,7 @@
  * Created by PhpStorm.
  * User: Administrator
  * Date: 2018/3/21
- * Time: 17:33
+ * Time: 17:33.
  */
 
 return [
@@ -16,7 +16,7 @@ return [
     // 允许的压缩文件类型
     'allow_upload_type' => [
         'zip',
-        'rar'
+        'rar',
     ],
     // 解压路径
     'extract_dir' => storage_path('app/uploads/extract'),
@@ -26,7 +26,7 @@ return [
         'directories' => [
             'vendor',
             'storage',
-            'bootstrap'
+            'bootstrap',
         ],
         // 文件
         'files' => [

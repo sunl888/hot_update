@@ -8,7 +8,6 @@ use Illuminate\Support\ServiceProvider as BaseServiceProvider;
 
 class ServiceProvider extends BaseServiceProvider
 {
-
     /**
      * Bootstrap any application services.
      *
@@ -20,9 +19,9 @@ class ServiceProvider extends BaseServiceProvider
         $this->loadTranslationsFrom(__DIR__ . 'resources/lang/zh', 'wqer1019');
 
         $this->publishes([
-            $config => config_path('update.php'),
+            $config                      => config_path('update.php'),
             __DIR__ . '/resources/views' => base_path('resources/views'),
-            __DIR__ . '/resources/lang' => base_path('resources/lang'),
+            __DIR__ . '/resources/lang'  => base_path('resources/lang'),
         ]);
 
         $this->mergeConfigFrom($config, 'update');
@@ -47,6 +46,7 @@ class ServiceProvider extends BaseServiceProvider
         $this->app->singleton(AutoUpdate::class, function () {
             $config = config('update');
             $excludeAsset = new ExcludeResource($config['exclude']);
+
             return new AutoUpdate(Finder::create(), $excludeAsset);
         });
     }

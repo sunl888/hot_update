@@ -36,7 +36,7 @@ class AutoUpdate
             // 如果是目录则不复制
             if (is_dir($file)) {
                 continue;
-            } else if (is_file($file)) {
+            } elseif (is_file($file)) {
                 $file_path = $file->getPath();
                 $file_name = $file->getFilename();
                 $relative_path = explode(config('update.extract_dir'), $file_path);
