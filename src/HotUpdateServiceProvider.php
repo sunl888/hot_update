@@ -20,9 +20,9 @@ class HotUpdateServiceProvider extends ServiceProvider
         $this->loadTranslationsFrom(__DIR__ . '/resources/lang/zh', 'hotUpdate');
 
         $this->publishes([
-            $config => config_path('update.php'),
+            $config                      => config_path('update.php'),
             __DIR__ . '/resources/views' => base_path('/resources/views'),
-            __DIR__ . '/resources/lang' => base_path('/resources/lang'),
+            __DIR__ . '/resources/lang'  => base_path('/resources/lang'),
         ]);
 
         $this->mergeConfigFrom($config, 'update');
