@@ -1,6 +1,6 @@
 <?php
 
-namespace Wqer1019\AutoUpdate\Exceptions;
+namespace Wqer1019\HotUpdate\Exceptions;
 
 class ZipExtractException extends \Exception
 {

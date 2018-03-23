@@ -1,11 +1,11 @@
 <?php
 
-namespace Wqer1019\AutoUpdate;
+namespace Wqer1019\HotUpdate;
 
 use Symfony\Component\Finder\Finder;
 use Symfony\Component\HttpFoundation\File\File;
 
-class AutoUpdate
+class HotUpdate
 {
     protected $finder;
 
@@ -32,7 +32,7 @@ class AutoUpdate
     public function update()
     {
         foreach ($this->finder->in(config('update.extract_dir'))->depth('< 15') as $file) {
-            //\Log::info('AutoUpdate Message', ['File Name' => $file->getFilename(), 'File Type' => $file->getType()]);
+            //\Log::info('HotUpdate Message', ['File Name' => $file->getFilename(), 'File Type' => $file->getType()]);
             // 如果是目录则不复制
             if (is_dir($file)) {
                 continue;

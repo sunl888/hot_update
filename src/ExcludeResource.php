@@ -1,6 +1,6 @@
 <?php
 
-namespace Wqer1019\AutoUpdate;
+namespace Wqer1019\HotUpdate;
 
 class ExcludeResource
 {

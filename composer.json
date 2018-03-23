@@ -1,6 +1,6 @@
 {
-  "name": "wqer1019/auto_update",
-  "description": "a project auto update extension based on laravel development.",
+  "name": "wqer1019/hot_update",
+  "description": "a project hot update extension based on laravel development.",
   "type": "library",
   "authors": [
     {
@@ -16,13 +16,13 @@
       "src/helpers.php"
     ],
     "psr-4": {
-      "Wqer1019\\AutoUpdate\\": "src//"
+      "Wqer1019\\HotUpdate\\": "src/"
     }
   },
   "extra": {
     "laravel": {
       "providers": [
-        "Wqer1019\\AutoUpdate\\ServiceProvider"
+        "Wqer1019\\HotUpdate\\HotUpdateServiceProvider"
       ]
     }
   },

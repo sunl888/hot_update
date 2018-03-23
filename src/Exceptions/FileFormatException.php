@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Exceptions;
+namespace Wqer1019\HotUpdate\Exceptions;
 
 use Exception;
 

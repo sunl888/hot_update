@@ -1,28 +1,24 @@
 <?php
 
-namespace Wqer1019\AutoUpdate\Controllers;
+namespace Wqer1019\HotUpdate\Controllers;
 
 use Illuminate\Http\Request;
-use Wqer1019\AutoUpdate\AutoUpdate;
+use Wqer1019\HotUpdate\HotUpdate;
 use Symfony\Component\Finder\Finder;
-use App\Exceptions\FileFormatException;
 use Symfony\Component\HttpFoundation\File\File;
-use Wqer1019\AutoUpdate\Exceptions\ZipOpenException;
 use Illuminate\Contracts\Filesystem\FileNotFoundException;
 
 class UploadController
 {
     public function showForm()
     {
-        return view('upload');
+        return view('hotUpdate::upload');
     }
 
     /**
      * @param Request $request
      * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
      * @throws \Illuminate\Container\EntryNotFoundException
-     * @throws FileFormatException
-     * @throws ZipOpenException
      */
     public function handleUpload(Request $request)
     {
@@ -82,7 +78,7 @@ class UploadController
                 $zip->close(); //关闭处理的zip文件
                 // 是否解压成功
                 if ($isExtract) {
-                    app(AutoUpdate::class)->update();
+                    app(HotUpdate::class)->update();
                 } else {
                     throw new ZipOpenException(trans('update.zip_extract_failed'));
                 }
