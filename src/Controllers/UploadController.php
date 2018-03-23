@@ -28,7 +28,7 @@ class UploadController
     {
         $zipfile_path = config('update.root');
 
-        if (!$request->hasFile(config('update.upload_form_key'))) {
+        if (! $request->hasFile(config('update.upload_form_key'))) {
             throw new FileNotFoundException(trans('update.file_upload_failed'));
         }
         $upload_zipfile = $request->file(config('update.upload_form_key'));
@@ -37,7 +37,7 @@ class UploadController
             $upload_zipfile_ext = $upload_zipfile->getClientOriginalExtension();     // 扩展名
             $upload_zipfile_realPath = $upload_zipfile->getRealPath();   //临时文件的绝对路径
 
-            if (!in_array($upload_zipfile_ext, config('update.allow_upload_type'))) {
+            if (! in_array($upload_zipfile_ext, config('update.allow_upload_type'))) {
                 throw new FileFormatException(trans('update.incorrect_file_type'));
             }
             $upload_zipfile_md5 = md5_file($upload_zipfile_realPath);
@@ -45,15 +45,16 @@ class UploadController
             $finder = new Finder();
             // 过滤出zip文件,
             $finder->files()->filter(function (\SplFileInfo $splFileInfo) {
-                if (!in_array($splFileInfo->getExtension(), config('update.allow_upload_type'))) {
+                if (! in_array($splFileInfo->getExtension(), config('update.allow_upload_type'))) {
                     return false;
                 }
+
                 return true;
             });
 
             // 创建文件夹
             array_map(function ($path) {
-                if (!file_exists($path)) {
+                if (! file_exists($path)) {
                     mkdir($path, 0777, true);
                 }
             }, [$zipfile_path, config('update.extract_dir')]);
@@ -68,7 +69,7 @@ class UploadController
             }
             $finder = null;
 
-            if (!isset($file)) {
+            if (! isset($file)) {
                 // 将上传的临时文件移动到update目录
                 $save_filename = date('Y-m-d-H-i-s') . '-' . uniqid() . '.' . $upload_zipfile_ext;
                 $file = new File($upload_zipfile_realPath);
@@ -76,13 +77,12 @@ class UploadController
             }
             //解压文件
             $zip = new \ZipArchive();
-            if ($zip->open($file) === TRUE) {
-                $isExtract = $zip->extractTo(config('update.extract_dir'));//解压缩到在当前路径下文件夹的子文件夹
-                $zip->close();//关闭处理的zip文件
+            if ($zip->open($file) === true) {
+                $isExtract = $zip->extractTo(config('update.extract_dir')); //解压缩到在当前路径下文件夹的子文件夹
+                $zip->close(); //关闭处理的zip文件
                 // 是否解压成功
                 if ($isExtract) {
                     app(AutoUpdate::class)->update();
-
                 } else {
                     throw new ZipOpenException(trans('update.zip_extract_failed'));
                 }
@@ -96,9 +96,9 @@ class UploadController
                 //先删除目录下的文件：
                 $dh = opendir($dir);
                 while ($file = readdir($dh)) {
-                    if ($file != "." && $file != "..") {
+                    if ($file != '.' && $file != '..') {
                         $fullpath = $dir . DIRECTORY_SEPARATOR . $file;
-                        if (!is_dir($fullpath)) {
+                        if (! is_dir($fullpath)) {
                             unlink($fullpath);
                         } else {
                             $del($fullpath);
@@ -113,7 +113,6 @@ class UploadController
                     return false;
                 }
             }, config('update.extract_dir'));
-
         }
     }
 }
